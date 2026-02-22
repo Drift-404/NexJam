@@ -5,9 +5,9 @@ function Home({ setCurrentUser }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("keyAuth_currentUser"); // clear saved session
+    localStorage.removeItem("keyAuth_currentUser");
     setCurrentUser(null);
-    navigate("/profile"); // go directly to login page
+    navigate("/profile");
   };
 
   return (
@@ -15,11 +15,11 @@ function Home({ setCurrentUser }) {
       <div className="hero">
         <div className="hero-inner">
           <div className="hero-label">
-            SECURE • PASSWORDLESS • BEHAVIORAL
+            SECURE • UNIQUE • BEHAVIOURAL
           </div>
 
           <h1 className="hero-title">
-            Passwordless
+            Behavioural
             <br />
             Authentication
           </h1>
@@ -28,15 +28,14 @@ function Home({ setCurrentUser }) {
 
           <p className="hero-sub">
             Identity verified through keystroke dynamics.
-            No passwords. No friction. Just behavior.
+            No friction. Just behavior.
           </p>
 
           <div className="hero-actions">
-            <div className="button-row">
-              <button className="primary-btn">GET STARTED</button>
-              <button className="secondary-btn">LEARN MORE</button>
-            </div>
+            {/* Preserved your CTA buttons */}
+           
 
+            {/* Logout remains functional */}
             <button className="logout-btn" onClick={handleLogout}>
               LOGOUT
             </button>

@@ -277,10 +277,9 @@ button.secondary {
 
 .theme-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
-
 .theme-option {
   padding: 1.2rem;
   border-radius: 14px;
@@ -361,7 +360,7 @@ button.secondary {
   font-weight: 600;
 }
 
-/* ===== Minimal Text Logout ===== */
+
 
 .logout-btn {
   all: unset;
@@ -375,7 +374,7 @@ button.secondary {
   color: var(--accent);
 }
 
-/* animated underline */
+
 .logout-btn::after {
   content: "";
   position: absolute;
@@ -390,7 +389,7 @@ button.secondary {
 .logout-btn:hover::after {
   width: 100%;
 }
-/* ===== Hero Button Layout ===== */
+
 
 .hero-actions {
   display: flex;
@@ -405,4 +404,35 @@ button.secondary {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.training-input {
+  width: 100%;
+  padding: 14px 16px;
+
+  background: color-mix(in srgb, var(--panel) 80%, black);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  outline: none;
+  transition: all 0.25s ease;
+}
+.training-input {
+  margin-left: -16px;
+  margin-bottom: 10px;
+}
+
+.training-input::placeholder {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.training-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
 }
