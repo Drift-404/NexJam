@@ -1,0 +1,162 @@
+.profile-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 32px;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.tab-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+
+
+.form-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: 0.2s ease;
+}
+
+.form-box:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+.helper-text {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+
+.photo-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.photo-placeholder {
+  width: 70px;
+  height: 70px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.photo-placeholder svg {
+  width: 22px;
+  height: 22px;
+  color: var(--muted);
+}
+
+.photo-label {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+
+
+.logout-box {
+  text-align: center;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ff4d4d;
+  background: transparent;
+  color: #ff4d4d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 77, 77, 0.08);
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.5);
+}

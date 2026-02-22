@@ -3,10 +3,19 @@ import { createContext, useState, useEffect } from "react";
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "void"
+  );
 
   useEffect(() => {
-    document.body.className = theme;
+
+    document.body.classList.remove("void", "green", "amber", "light");
+
+
+    document.body.classList.add(theme);
+
+
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

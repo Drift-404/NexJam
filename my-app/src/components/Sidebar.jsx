@@ -1,60 +1,65 @@
-import React from "react";
-import { NavLink } from "react-router-dom"; 
+import { NavLink } from "react-router-dom";
 
 function Sidebar({ currentUser }) {
-  // Dynamic styling for the active tab
-  const navLinkStyle = ({ isActive }) => ({
-    color: isActive ? 'var(--primary-blue)' : 'var(--text-muted)', 
-    textDecoration: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.8rem',
-    padding: '0.8rem 1.5rem', 
-    borderLeft: isActive ? '3px solid var(--primary-blue)' : '3px solid transparent', 
-    transition: 'all 0.2s ease',
-    fontFamily: 'var(--font-mono)',
-    fontSize: '0.85rem',
-    letterSpacing: '0.05em'
-  });
-
-  // Hide sidebar if not logged in
   if (!currentUser) return null;
 
   return (
-<<<<<<< HEAD
-    <div className="sidebar">
-      <h2 className="logo">KeyAuth</h2>
-      <div className="sidebar-section-label">Navigation</div>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-        <NavLink to="/add-user">Add User</NavLink>
-        <NavLink to="/settings">Settings</NavLink>
-=======
-    <aside className="sidebar" style={{ width: '250px', borderRight: '1px solid var(--border-color)', backgroundColor: 'var(--bg-dark)', paddingTop: '2rem' }}>
-      
-      {/* Brand Logo & Name */}
-      <div className="brand" style={{ color: 'var(--primary-blue)', fontWeight: 'bold', fontSize: '1rem', paddingLeft: '1.5rem', marginBottom: '3rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-mono)' }}>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    <aside className="sidebar">
+
+
+      <div className="logo">
+        <svg
+          className="logo-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
-        KEYAUTH
+        <span>KEYAUTH</span>
       </div>
 
-      {/* Navigation Links with SVGs */}
-      <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="sidebar-section-label">Navigation</div>
 
-        {/* ADD USER ICON */}
-        <NavLink to="/add-user" style={navLinkStyle}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="8.5" cy="7" r="4"></circle>
-            <line x1="20" y1="8" x2="20" y2="14"></line>
-            <line x1="23" y1="11" x2="17" y2="11"></line>
-          </svg>
-          ADD USER
+      <nav className="sidebar-nav">
+
+
+        <NavLink to="/" end>
+          <span className="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 10.5L12 3l9 7.5" />
+              <path d="M5 9.5V21h14V9.5" />
+            </svg>
+          </span>
+          <span>Home</span>
         </NavLink>
->>>>>>> 9d12d876cf8af133e282c4f12d894d26ad4c93aa
+
+
+        <NavLink to="/add-user">
+          <span className="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="9" cy="8" r="4" />
+              <path d="M17 11v6" />
+              <path d="M20 14h-6" />
+              <path d="M3 21v-2a6 6 0 0 1 6-6" />
+            </svg>
+          </span>
+          <span>Add User</span>
+        </NavLink>
+
+        <NavLink to="/settings">
+          <span className="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.4 1V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-.4-1 1.65 1.65 0 0 0-1-.6 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-.6-1 1.65 1.65 0 0 0-1-.4H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1-.4 1.65 1.65 0 0 0 .6-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.13 3.3l.06.06A1.65 1.65 0 0 0 9 4.6c.39 0 .77-.15 1-.4A1.65 1.65 0 0 0 10.4 3V3a2 2 0 1 1 4 0v.09c0 .39.15.77.4 1 .23.25.61.4 1 .4.39 0 .77-.15 1-.4l.06-.06A2 2 0 1 1 21 7.13l-.06.06c-.25.23-.4.61-.4 1 0 .39.15.77.4 1 .25.23.61.4 1 .4H21a2 2 0 1 1 0 4h-.09c-.39 0-.77.15-1 .4-.25.23-.4.61-.4 1z" />
+            </svg>
+          </span>
+          <span>Settings</span>
+        </NavLink>
+
       </nav>
 
     </aside>
