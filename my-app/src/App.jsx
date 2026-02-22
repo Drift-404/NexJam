@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+
 import Sidebar from "./components/Sidebar";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
@@ -8,6 +9,7 @@ import AddUser from "./pages/AddUser";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -15,49 +17,74 @@ function App() {
     if (savedUser) {
       setCurrentUser(JSON.parse(savedUser));
     }
+    setIsLoading(false);
   }, []);
 
-  const isLoginPage = location.pathname === "/profile";
+  if (isLoading) return null;
+
+  const isAuthPage = location.pathname === "/profile";
 
   return (
     <div className="layout">
-      {!isLoginPage && (
+
+      {currentUser && !isAuthPage && (
         <Sidebar currentUser={currentUser} />
       )}
 
       <div className="page">
         <Routes>
+
+          {/* ROOT REDIRECT */}
           <Route
             path="/"
             element={
-              <Home
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
+              <Navigate to={currentUser ? "/home" : "/profile"} />
             }
           />
 
+          {/* LOGIN */}
           <Route
             path="/profile"
             element={
-              <Profile
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
+              currentUser
+                ? <Navigate to="/home" />
+                : <Profile setCurrentUser={setCurrentUser} />
             }
           />
 
-          <Route path="/settings" element={<Settings />} />
+          {/* HOME */}
+          <Route
+            path="/home"
+            element={
+              currentUser
+                ? <Home setCurrentUser={setCurrentUser} />
+                : <Navigate to="/profile" />
+            }
+          />
 
+          {/* ADD USER */}
           <Route
             path="/add-user"
             element={
-              <AddUser
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
+              currentUser
+                ? <AddUser />
+                : <Navigate to="/profile" />
             }
           />
+
+          {/* SETTINGS */}
+          <Route
+            path="/settings"
+            element={
+              currentUser
+                ? <Settings />
+                : <Navigate to="/profile" />
+            }
+          />
+
+          {/* CATCH ALL */}
+          <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </div>
     </div>

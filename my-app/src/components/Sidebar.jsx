@@ -27,7 +27,7 @@ function Sidebar({ currentUser }) {
       <nav className="sidebar-nav">
 
 
-        <NavLink to="/" end>
+        <NavLink to="/home" end>
           <span className="nav-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 10.5L12 3l9 7.5" />

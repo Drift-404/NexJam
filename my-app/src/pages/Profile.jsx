@@ -1,10 +1,7 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../Profile.css";
 
 function Profile({ currentUser, setCurrentUser }) {
-  const navigate = useNavigate();
-
   const [tab, setTab] = useState("signup");
   const [error, setError] = useState("");
 
@@ -12,12 +9,6 @@ function Profile({ currentUser, setCurrentUser }) {
   const [loginPassword, setLoginPassword] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
-
-  useEffect(() => {
-    if (currentUser) {
-      navigate("/");
-    }
-  }, [currentUser, navigate]);
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -42,7 +33,7 @@ function Profile({ currentUser, setCurrentUser }) {
     localStorage.setItem("keyAuth_users", JSON.stringify(existingUsers));
     localStorage.setItem("keyAuth_currentUser", JSON.stringify(newUser));
 
-    setCurrentUser(newUser);
+    setCurrentUser(newUser); // App.jsx will redirect automatically
   };
 
   const handleLogin = (e) => {
@@ -63,7 +54,7 @@ function Profile({ currentUser, setCurrentUser }) {
         "keyAuth_currentUser",
         JSON.stringify(foundUser)
       );
-      setCurrentUser(foundUser);
+      setCurrentUser(foundUser); // App.jsx handles redirect
     } else {
       setError("Invalid credentials. Please try again.");
     }

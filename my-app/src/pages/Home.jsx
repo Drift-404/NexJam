@@ -5,14 +5,13 @@ function Home({ setCurrentUser }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem("keyAuth_currentUser"); // clear saved session
     setCurrentUser(null);
-    navigate("/");
+    navigate("/profile"); // go directly to login page
   };
 
   return (
     <div className="home-container">
-
-      {/* Hero Section */}
       <div className="hero">
         <div className="hero-inner">
           <div className="hero-label">
@@ -37,13 +36,13 @@ function Home({ setCurrentUser }) {
               <button className="primary-btn">GET STARTED</button>
               <button className="secondary-btn">LEARN MORE</button>
             </div>
+
             <button className="logout-btn" onClick={handleLogout}>
               LOGOUT
             </button>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

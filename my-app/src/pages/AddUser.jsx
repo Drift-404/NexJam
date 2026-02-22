@@ -1,29 +1,11 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "../Profile.css";
 
-function AddUser({ currentUser, setCurrentUser }) {
-  const navigate = useNavigate();
+function AddUser() {
   const [name, setName] = useState("");
-
-
-  useEffect(() => {
-    if (!currentUser) {
-      navigate("/profile");
-    }
-  }, [currentUser, navigate]);
-
-  if (!currentUser) return null;
-
-  const handleLogout = () => {
-    localStorage.removeItem("keyAuth_currentUser");
-    setCurrentUser(null);
-    navigate("/profile");
-  };
 
   const handleTrain = () => {
     if (!name.trim()) return;
-    // later: navigate to training screen
     console.log("Start training for:", name);
   };
 
@@ -35,8 +17,8 @@ function AddUser({ currentUser, setCurrentUser }) {
       </div>
 
       <div className="auth-wrapper">
-
         <div className="form-box">
+
           <div className="photo-upload">
             <div className="photo-placeholder">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -64,10 +46,8 @@ function AddUser({ currentUser, setCurrentUser }) {
           >
             TRAIN DATASET <span>&gt;</span>
           </button>
+
         </div>
-
-
-
       </div>
     </div>
   );
